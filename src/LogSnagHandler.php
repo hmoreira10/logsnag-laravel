@@ -28,8 +28,9 @@ class LogSnagHandler extends AbstractProcessingHandler
         Http::withToken($this->token)
             ->post('https://api.logsnag.com/v1/log', [
                 'project' => $this->project,
-                'event' => $record->message,
-                'icon' => '📘',
+                'event' => !empty($context['event']) ? $context['event'] : $record->message,
+                'description' => !empty($context['event']) ? $record->message : '',
+                'icon' => !empty($context['icon']) ? $context['icon'] :'📘',
                 'notify' => $context['notify'] ?? false,
                 'channel' => $this->channel,
             ]);
