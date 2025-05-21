@@ -13,7 +13,8 @@ class LogSnagLogger
                 Logger::toMonologLevel($config['level'] ?? 'debug'),
                 true,
                 $config['token'] ?? '',
-                $config['project'] ?? ''
+                $config['project'] ?? '',
+                $config['channel'] ?? ''
             )
         ]);
     }

@@ -12,11 +12,14 @@ class LogSnagHandler extends AbstractProcessingHandler
     protected $token;
     protected $project;
 
-    public function __construct($level = Logger::DEBUG, bool $bubble = true, $token = '', $project = '')
+    protected $channel;
+
+    public function __construct($level = Logger::DEBUG, bool $bubble = true, $token = '', $project = '', $channel = '')
     {
         parent::__construct($level, $bubble);
         $this->token = $token;
         $this->project = $project;
+        $this->channel = $channel;
     }
 
     protected function write(LogRecord $record): void
@@ -28,7 +31,7 @@ class LogSnagHandler extends AbstractProcessingHandler
                 'event' => $record->message,
                 'icon' => '📘',
                 'notify' => $context['notify'] ?? false,
-                'channel' => 'event-sources',
+                'channel' => $this->channel,
             ]);
     }
 }

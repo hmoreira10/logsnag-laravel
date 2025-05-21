@@ -29,12 +29,13 @@ Add the custom log channel to your `config/logging.php` file:
 'channels' => [
     // other channels...
 
-    'logsnag' => [
+    'logsnag-your-channel' => [
         'driver' => 'custom',
         'via' => LogSnag\Logger\LogSnagLogger::class,
         'level' => 'info',
         'token' => env('LOGSNAG_TOKEN'),
         'project' => env('LOGSNAG_PROJECT'),
+        'channel' => 'your-channel'
     ],
 ],
 ```
@@ -56,8 +57,7 @@ Use the custom log channel in your Laravel application like this:
 use Illuminate\Support\Facades\Log;
 
 Log::channel('logsnag')->info('Important event happened', [
-    'notify' => false,
-    'channel' => 'event-sources',
+    'notify' => false
     'icon' => '💰',
 ]);
 ```
