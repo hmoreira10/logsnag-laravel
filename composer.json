@@ -1,0 +1,21 @@
+{
+  "name": "hmoreira10/logsnag-logger",
+  "description": "Canal de log personalizado do Laravel para envio ao LogSnag via HTTP",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "LogSnag\\Logger\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=8.1",
+    "illuminate/support": "^10.0 || ^11.0",
+    "monolog/monolog": "^3.0"
+  },
+  "extra": {
+    "laravel": {
+      "providers": []
+    }
+  }
+}
